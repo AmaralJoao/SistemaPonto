@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Login - ClockHub</title>
+    <style>
+        /* Fundo escuro com efeito de estrelas */
+        body {
+            background: radial-gradient(circle at top, #141414, #0a0a0a);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container centralizado */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Card de login com efeito glassmorphism */
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Logo centralizada */
+        .logo-img {
+            width: 90px;
+            height: 85px;
+            margin-bottom: 10px;
+        }
+
+        /* Título */
+        .title {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* Campos de entrada */
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Botão de login */
+        .login-button {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #5a5a5a, #303030);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Mensagens de erro */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Texto de cadastro */
+        .signup-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .signup-text a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</h:head>
+<h:body>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <h:graphicImage value="/resources/image/LogoPng.png" styleClass="logo-img"/>
+            </div>
+            <h2 class="title">ClockHub</h2>
+
+            <h:form>
+                <!-- Exibe mensagens de erro globais -->
+                <h:messages globalOnly="true" styleClass="error-message" showSummary="true" showDetail="false" />
+
+                <!-- Campo de usuário -->
+                <p:inputText id="login" value="#{loginBean.username}" placeholder="Email" styleClass="input-field" required="true"/>
+                <h:message for="login" styleClass="error-message" />
+
+                <!-- Campo de senha -->
+                <p:password id="senha" value="#{loginBean.password}" placeholder="Password" styleClass="input-field" required="true"/>
+                <h:message for="senha" styleClass="error-message" />
+
+                <!-- Botão de login -->
+                <p:commandButton value="Sign in" action="#{loginBean.logar}" styleClass="login-button" update="@form"/>
+
+                <p class="signup-text">
+                    Don't have an account? <a href="#">Sign up, it's free!</a>
+                </p>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+</html>
